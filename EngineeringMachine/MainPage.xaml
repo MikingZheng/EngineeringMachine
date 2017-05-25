@@ -1,0 +1,169 @@
+﻿<Page
+    x:Class="EngineeringMachine.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EngineeringMachine"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" Margin="10,0">超磁免疫分析仪</TextBlock>
+        </Grid>
+        <Grid Grid.Row="1"  >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Name="Operations" Margin="5" BorderThickness="1" BorderBrush="Gray">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Background="LightGray">
+                         <TextBlock Text="Operations" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <StackPanel Orientation="Vertical" Margin="10">
+                            <Button Width="120" Margin="10">Initialization</Button>
+                            <StackPanel Orientation="Horizontal" Margin="0,20, 0, 0">
+                                <TextBlock Width="150" Margin="5">Project:</TextBlock>
+                                <ComboBox Margin="5" Width="150" IsEnabled="True">
+                                    
+                                </ComboBox>
+                            </StackPanel>
+                            <Button Content="Start" Margin="10, 50" FontSize="30" Width="200" Background="LightGreen" HorizontalAlignment="Center"></Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1" Name="Configuration" Margin="5" BorderThickness="1" BorderBrush="Gray">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Background="LightGray">
+                        <TextBlock Text="Configuration" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Margin="5" Width="150">Moving Speed (mm/s)</TextBlock>
+                            <ComboBox Width="150">
+                                <ComboBoxItem>0.1</ComboBoxItem>
+                                <ComboBoxItem>0.2</ComboBoxItem>
+                                <ComboBoxItem>0.5</ComboBoxItem>
+                                <ComboBoxItem>1</ComboBoxItem>
+                                <ComboBoxItem IsSelected="True">2</ComboBoxItem>
+                                <ComboBoxItem>5</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2" Name="TestArea" Margin="5" BorderThickness="1" BorderBrush="Gray">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Background="LightGray">
+                        <TextBlock Text="Engineer Test" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <StackPanel Orientation="Vertical" Margin="10">
+                            <Button Margin="10" Width="120">Initialization</Button>
+                            <StackPanel Orientation="Horizontal" Margin="10, 10, 0, 0">
+                                <TextBlock Width="150">Steps (0 - nonstop):</TextBlock>
+                                <ComboBox Width="150" Margin="0, 0, 0, 10">
+                                    <ComboBoxItem>0</ComboBoxItem>
+                                    <ComboBoxItem>1</ComboBoxItem>
+                                    <ComboBoxItem>10</ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="10,0, 0, 10">
+                                <TextBlock Margin="10">Moving:</TextBlock>
+                                <Button Margin="5" Width="80">Forward</Button>
+                                <Button Margin="5" Width="80">Stop</Button>
+                                <Button Margin="5" Width="80">Backward</Button>
+                            </StackPanel>
+                            <Button Margin="10" Width="120">Drop out Strip</Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1" Margin="5" BorderBrush="Gray" BorderThickness="1">
+                <SplitView  x:Name="historyView" PanePlacement="Right" IsPaneOpen="False" OpenPaneLength="500" DisplayMode="Overlay" >
+                    <SplitView.Pane >
+                        <Grid Background="WhiteSmoke">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Background="LightGray" Margin="5">
+                                <TextBlock Text="Hisstory Pane" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                            <Grid Grid.Row="1" Margin="5">
+                                <TextBlock Text="Hisstory Details" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+ 
+                        </Grid>
+                    </SplitView.Pane>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Background="LightGray">
+                            <TextBlock Text="Test Data" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Button x:Name="btnHistory" HorizontalAlignment="Right" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="btnHistory_Click"/>
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="50">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="18" Margin="0,0,10,10">Temperature (C):</TextBlock>
+                                    <TextBlock FontSize="18" Margin="10,0,10,10">0.0</TextBlock>
+                                </StackPanel>
+                                <TextBlock FontSize="18" Margin="0, 20, 0, 10">Magnetic Sensing</TextBlock>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock FontSize="30" Margin="0,10,10,10">Max:</TextBlock>
+                                    <TextBlock FontSize="40" Margin="10,0,50,10">0.0</TextBlock>
+                                    <TextBlock FontSize="30" Margin="50,10,10,10">Min:</TextBlock>
+                                    <TextBlock FontSize="40" Margin="10,0,10,10">0.0</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="50">
+                                    <TextBlock FontSize="80" Margin="10,0,50,10">0.0</TextBlock>
+                                    <TextBlock FontSize="30" Margin="50,50,10,10">Max - Min:</TextBlock>
+                                    <TextBlock FontSize="40" Margin="10,40,10,10">0.0</TextBlock>
+                                </StackPanel>
+                                <ProgressBar Width="520" Height="20"></ProgressBar>
+                            </StackPanel>
+                        </Grid>
+                        <!--<Button Name="btnHistory" Click="btnHistory_Click">History</Button>-->
+                    </Grid>
+
+                </SplitView>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2"  VerticalAlignment="Stretch" Margin="5" BorderThickness="1" BorderBrush="Gray">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Width="100" >电机状态</TextBlock>
+                <TextBlock Width="200">Initial Position</TextBlock>
+                <TextBlock Width="100" >Lateral Strip</TextBlock>
+                <TextBlock Width="200">No</TextBlock>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page> 
